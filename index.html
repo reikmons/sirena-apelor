@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sirena iustina</title>
+    <title>Password Protected Page</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your existing style.css -->
 </head>
 <body>
-    <h1>sirena iustina aduce lumina</h1>
-    <p>baga parola sa afli secretul</p>
+    <!-- Password Form -->
+    <div id="passwordFormContainer">
+        <h2>Please enter the password to access the website:</h2>
+        <form id="passwordForm">
+            <input type="password" id="passwordInput" placeholder="Enter password" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Main content (hidden initially) -->
+    <div id="mainContent" style="display:none;">
+        <h1>Welcome to the Website!</h1>
+        <p>This is the content of the website that will be visible after the correct password is entered.</p>
+        <!-- Add the rest of your website's content here -->
+    </div>
+
+    <script>
+        // The correct password (you can change this to whatever you like)
+        const correctPassword = "yourpassword";
+
+        // Function to handle the form submission and password check
+        document.getElementById("passwordForm").onsubmit = function(event) {
+            event.preventDefault(); // Prevent form from submitting
+
+            // Get the entered password
+            const enteredPassword = document.getElementById("passwordInput").value;
+
+            // Check if the entered password is correct
+            if (enteredPassword === correctPassword) {
+                // Show the main content and hide the password form
+                document.getElementById("passwordFormContainer").style.display = "none";
+                document.getElementById("mainContent").style.display = "block";
+            } else {
+                // If the password is incorrect, show an alert
+                alert("Incorrect password. Please try again.");
+            }
+        };
+    </script>
 </body>
 </html>
